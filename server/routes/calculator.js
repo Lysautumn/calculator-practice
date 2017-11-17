@@ -11,8 +11,17 @@ router.post('/', function(req, res) {
     var secondNumber = parseInt(req.body.numTwo);
     switch(req.body.oper) {
         case 'add':
-        mathResult = firstNumber + secondNumber;
-        break;
+            mathResult = firstNumber + secondNumber;
+            break;
+        case 'subtract':
+            mathResult = firstNumber - secondNumber;
+            break;
+        case 'multiply':
+            mathResult = firstNumber * secondNumber;
+            break;
+        case 'divide':
+            mathResult = firstNumber / secondNumber;
+            break;
     }
 
     res.sendStatus(200);
