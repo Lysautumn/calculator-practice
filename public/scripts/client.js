@@ -26,9 +26,24 @@ function calculation(first, second, oper) {
         data: mathQuery,
         success: function(response) {
             console.log('this is the response from the server from calculation function', response);
+            getResults();
         },
         error: function(error) {
             console.log('there was an error in the calculation function', error);
+        }
+    });
+}
+
+function getResults() {
+    $.ajax({
+        method: 'GET',
+        url: '/calc',
+        success: function(response) {
+            console.log('This is the response from the getResults function', response);
+            $('#solution').text(response.result);
+        },
+        error: function(error) {
+            console.log('Error in the getResults function', error);
         }
     });
 }
