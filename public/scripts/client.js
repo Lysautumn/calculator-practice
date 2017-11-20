@@ -16,6 +16,12 @@ function onReady() {
         console.log('This is the operator', operator);
         calculation(valOne, valTwo, operator);
     });
+    $('#clear').on('click', function(){
+        console.log('clear button clicked!');
+        $('#firstNum').val('');
+        $('#secondNum').val('');
+        $('#solution').text('0');
+    });
 }
 
 function calculation(first, second, oper) {
@@ -41,6 +47,7 @@ function getResults() {
         success: function(response) {
             console.log('This is the response from the getResults function', response);
             $('#solution').text(response.result);
+            $('#history').append('<p>' + response.history.first + ' ' + response.history.operator + ' ' + response.history.second + ' = ' + response.history.result + '</p>');
         },
         error: function(error) {
             console.log('Error in the getResults function', error);
